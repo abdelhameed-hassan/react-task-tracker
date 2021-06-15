@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import Button from "./Button";
 import { useLocation } from "react-router-dom";
+// import React from "react";
 
 const Header = ({ title, onAdd, showAdd }) => {
   const location = useLocation();
@@ -28,6 +29,35 @@ Header.propTypes = {
 };
 
 export default Header;
+
+// const location = useLocation();
+
+// export default class Tasks extends React.Component {
+//   render() {
+//     const { title, onAdd, showAdd } = this.props;
+
+//     this.defaultProps = {
+//       title: "Task Tracker",
+//     };
+
+//     this.propTypes = {
+//       title: PropTypes.string.isRequired,
+//     };
+
+//     return (
+//       <header className="header">
+//         <h1>{title}</h1>
+//         {location.pathname === "/" && (
+//           <Button
+//             color={showAdd ? "red" : "green"}
+//             text={showAdd ? "Close" : "Add"}
+//             onClick={onAdd}
+//           />
+//         )}
+//       </header>
+//     );
+//   }
+// }
 
 // CSS IN JS
 // const headingStyle = {
