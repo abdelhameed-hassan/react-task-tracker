@@ -7,7 +7,7 @@ interface Props {
   onToggle: any
 }
 
-const Task :React.FC<Props> = ({ task, onDelete, onToggle } :any) => {
+const Task :React.FC<Props> = ({ task, onDelete, onToggle }) => {
   return (
     <div
       className={`task ${task.reminder ? `reminder` : ""}`}

@@ -9,7 +9,7 @@ interface Props {
   showAdd: 'string'
 }
 
-const Header :React.FC<Props> = ({ title, onAdd, showAdd } :any) => {
+const Header :React.FC<Props> = ({ title, onAdd, showAdd }) => {
   const location = useLocation<HTMLInputElement>();
 
   return (

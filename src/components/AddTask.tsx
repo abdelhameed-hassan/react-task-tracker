@@ -5,7 +5,7 @@ interface Props {
   onAdd: any,
 }
 
-const AddTask :React.FC<Props>  = ({ onAdd } :any) => {
+const AddTask :React.FC<Props>  = ({ onAdd }) => {
   const [text, setText] = useState("");
   const [day, setDay] = useState("");
   const [reminder, setReminder] = useState<any>(false);

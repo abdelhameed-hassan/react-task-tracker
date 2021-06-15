@@ -7,7 +7,7 @@ interface Props {
   onClick: any
 }
 
-const Button :React.FC<Props> = ({ color, text, onClick } :any) => {
+const Button :React.FC<Props> = ({ color, text, onClick }) => {
   return (
     <button
       onClick={onClick}
