@@ -1,4 +1,4 @@
-// import React from 'react';
+import React from 'react';
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "./components/Header";
@@ -21,9 +21,9 @@ import About from "./components/About";
 
 // Function Way
 
-const App = () => {
-  const [showAddTask, setShowAddTask] = useState(false);
-  const [tasks, setTasks] = useState([]);
+const App: React.FC = () => {
+  const [showAddTask, setShowAddTask]  = useState<boolean | any>(false);
+  const [tasks, setTasks] = useState<any>([]);
 
   useEffect(() => {
     const getTasks = async () => {
@@ -42,7 +42,7 @@ const App = () => {
   };
 
   //Fetch Task
-  const fetchTask = async (id) => {
+  const fetchTask = async (id: any) => {
     const res = await fetch(`http://localhost:5000/tasks/${id}`);
     const data = await res.json();
 
@@ -50,7 +50,7 @@ const App = () => {
   };
 
   // Add Task
-  const addTask = async (task) => {
+  const addTask = async (task: any) => {
     const res = await fetch("http://localhost:5000/tasks", {
       method: "POST",
       headers: {
@@ -68,15 +68,15 @@ const App = () => {
   };
 
   // Delete Task
-  const deleteTask = async (id) => {
+  const deleteTask = async (id: any) : Promise<any> => {
     await fetch(`http://localhost:5000/tasks/${id}`, {
       method: "DELETE",
     });
-    setTasks(tasks.filter((tasks) => tasks.id !== id));
+    setTasks(tasks.filter((tasks: any) => tasks.id !== id));
   };
 
   // Toggle Reminder
-  const toggleReminder = async (id) => {
+  const toggleReminder = async (id: any) => {
     const taskToToggle = await fetchTask(id);
     const updateTask = { ...taskToToggle, reminder: !taskToToggle.reminder };
 
@@ -91,7 +91,7 @@ const App = () => {
     const data = await res.json();
 
     setTasks(
-      tasks.map((task) =>
+      tasks.map((task: any) =>
         task.id === id ? { ...task, reminder: data.reminder } : task
       )
     );
@@ -101,13 +101,14 @@ const App = () => {
     <Router>
       <div className="container">
         <Header
-          onAdd={() => setShowAddTask(!showAddTask)}
+          title="Task Tracker"
+          onAdd={(): any => setShowAddTask(!showAddTask)}
           showAdd={showAddTask}
         />
         <Route
           path="/"
           exact
-          render={(props) => (
+          render={(props: any) => (
             <>
               {" "}
               {showAddTask && <AddTask onAdd={addTask} />}

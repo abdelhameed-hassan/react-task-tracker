@@ -1,6 +1,13 @@
 import PropTypes from "prop-types";
+import React from "react";
 
-const Button = ({ color, text, onClick }) => {
+interface Props {
+  color: "string" | any,
+  text: "string" | any, 
+  onClick: any
+}
+
+const Button :React.FC<Props> = ({ color, text, onClick } :any) => {
   return (
     <button
       onClick={onClick}

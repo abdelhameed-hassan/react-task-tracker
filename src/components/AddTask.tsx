@@ -1,12 +1,16 @@
 import { useState } from "react";
-// import React from "react";
+import React from "react";
 
-const AddTask = ({ onAdd }) => {
+interface Props {
+  onAdd: any,
+}
+
+const AddTask :React.FC<Props>  = ({ onAdd } :any) => {
   const [text, setText] = useState("");
   const [day, setDay] = useState("");
-  const [reminder, setReminder] = useState(false);
+  const [reminder, setReminder] = useState<any>(false);
 
-  const onSubmit = (e) => {
+  const onSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!text) {

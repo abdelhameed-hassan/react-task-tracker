@@ -1,10 +1,17 @@
 import Task from "./Task";
-// import React from "react";
+import React, { PropsWithChildren } from "react";
 
-const Tasks = ({ tasks, onDelete, onToggle }) => {
+// interface Props {
+//   task: any ,
+//   onDelete: any,
+//   onToggle: any
+// }
+
+
+const Tasks = ({ tasks, onDelete, onToggle } :any) => {
   return (
     <>
-      {tasks.map((task) => (
+      {tasks.map((task: any) => (
         <Task
           key={task.id}
           task={task}

@@ -1,7 +1,13 @@
 import { FaTimes } from "react-icons/fa";
-// import React from "react";
+import React from "react";
 
-const Task = ({ task, onDelete, onToggle }) => {
+interface Props {
+  task: any,
+  onDelete: any,
+  onToggle: any
+}
+
+const Task :React.FC<Props> = ({ task, onDelete, onToggle } :any) => {
   return (
     <div
       className={`task ${task.reminder ? `reminder` : ""}`}

@@ -1,10 +1,16 @@
 import PropTypes from "prop-types";
 import Button from "./Button";
 import { useLocation } from "react-router-dom";
-// import React from "react";
+import React from "react";
 
-const Header = ({ title, onAdd, showAdd }) => {
-  const location = useLocation();
+interface Props {
+  title: 'string' | any,
+  onAdd: any,
+  showAdd: 'string'
+}
+
+const Header :React.FC<Props> = ({ title, onAdd, showAdd } :any) => {
+  const location = useLocation<HTMLInputElement>();
 
   return (
     <header className="header">
