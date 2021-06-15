@@ -4,7 +4,7 @@ import React from "react";
 interface Props {
   color: "string" | any,
   text: "string" | any, 
-  onClick: any
+  onClick: any 
 }
 
 const Button :React.FC<Props> = ({ color, text, onClick }) => {

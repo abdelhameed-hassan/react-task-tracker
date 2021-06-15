@@ -2,7 +2,7 @@ import { useState } from "react";
 import React from "react";
 
 interface Props {
-  onAdd: any,
+  onAdd: any
 }
 
 const AddTask :React.FC<Props>  = ({ onAdd }) => {

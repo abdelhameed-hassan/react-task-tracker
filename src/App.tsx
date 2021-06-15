@@ -34,24 +34,24 @@ const App: React.FC = () => {
   }, []);
 
   //Fetch Tasks
-  const fetchTasks = async () => {
-    const res = await fetch("http://localhost:5000/tasks");
-    const data = await res.json();
+  const fetchTasks = async (): Promise<any> => {
+    const res: Response = await fetch("http://localhost:5000/tasks");
+    const data:[] = await res.json();
 
     return data;
   };
 
   //Fetch Task
-  const fetchTask = async (id: any) => {
-    const res = await fetch(`http://localhost:5000/tasks/${id}`);
-    const data = await res.json();
+  const fetchTask = async (id: number): Promise<any> => {
+    const res: Response = await fetch(`http://localhost:5000/tasks/${id}`);
+    const data:[] = await res.json();
 
     return data;
   };
 
   // Add Task
-  const addTask = async (task: any) => {
-    const res = await fetch("http://localhost:5000/tasks", {
+  const addTask = async (task: any): Promise<any> => {
+    const res: Response = await fetch("http://localhost:5000/tasks", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -59,7 +59,7 @@ const App: React.FC = () => {
       body: JSON.stringify(task),
     });
 
-    const data = await res.json();
+    const data:[] = await res.json();
 
     setTasks([...tasks, data]);
     // const id = Math.floor(Math.random() * 1000) + 1;
@@ -68,7 +68,7 @@ const App: React.FC = () => {
   };
 
   // Delete Task
-  const deleteTask = async (id: any) : Promise<any> => {
+  const deleteTask = async (id: number): Promise<any> => {
     await fetch(`http://localhost:5000/tasks/${id}`, {
       method: "DELETE",
     });
@@ -76,7 +76,7 @@ const App: React.FC = () => {
   };
 
   // Toggle Reminder
-  const toggleReminder = async (id: any) => {
+  const toggleReminder = async (id: number) => {
     const taskToToggle = await fetchTask(id);
     const updateTask = { ...taskToToggle, reminder: !taskToToggle.reminder };
 
