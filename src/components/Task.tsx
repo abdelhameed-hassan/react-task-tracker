@@ -3,8 +3,8 @@ import React from "react";
 
 interface Props {
   task: any,
-  onDelete: (id: number) => JSX.Element,
-  onToggle: (id: number) => JSX.Element
+  onDelete: (id: number) => void,
+  onToggle: (id: number) => void
 }
 
 const Task :React.FC<Props> = ({ task, onDelete, onToggle }) => {

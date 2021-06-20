@@ -3,9 +3,9 @@ import Button from "./Button";
 import { useLocation } from "react-router-dom";
 
 interface Props {
-  title: 'string' | any,
+  title: string,
   onAdd: () => JSX.Element,
-  showAdd: 'string'
+  showAdd: boolean
 }
 
 const Header :React.FC<Props> = ({ title, onAdd, showAdd }) => {

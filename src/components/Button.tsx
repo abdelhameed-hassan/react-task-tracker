@@ -1,10 +1,10 @@
-import PropTypes from "prop-types";
-import React from "react";
+// import PropTypes from "prop-types";
+import React, { MouseEventHandler } from "react";
 
 interface Props {
-  color: "string" | any,
-  text: "string" | any, 
-  onClick: any 
+  color: string,
+  text: string, 
+  onClick: MouseEventHandler<HTMLElement>
 }
 
 const Button :React.FC<Props> = ({ color, text, onClick }) => {
@@ -21,12 +21,6 @@ const Button :React.FC<Props> = ({ color, text, onClick }) => {
 
 Button.defaultProps = {
   color: "steelblue",
-};
-
-Button.propTypes = {
-  text: PropTypes.string,
-  color: PropTypes.string,
-  onClick: PropTypes.func,
 };
 
 export default Button;

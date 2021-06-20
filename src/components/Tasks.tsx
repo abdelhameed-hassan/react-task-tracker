@@ -1,17 +1,17 @@
-import Task from "./Task";
-import React, { PropsWithChildren } from "react";
+import { Task as TaskModel }   from '../models/Task';
+import Task from "./Task"
+ 
+interface Props {
+  tasks: TaskModel[],
+  onDelete: (id: number) => void,
+  onToggle: (id: number) => void
+}
 
-// interface Props {
-//   task: any ,
-//   onDelete: any,
-//   onToggle: any
-// }
 
-
-const Tasks = ({ tasks, onDelete, onToggle } :any) => {
+const Tasks :React.FC<Props> = ({ tasks, onDelete, onToggle }) => {
   return (
     <>
-      {tasks.map((task: any) => (
+      {tasks.map((task: TaskModel) => (
         <Task
           key={task.id}
           task={task}

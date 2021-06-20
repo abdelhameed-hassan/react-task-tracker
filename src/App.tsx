@@ -6,6 +6,7 @@ import Tasks from "./components/Tasks";
 import AddTask from "./components/AddTask";
 import Footer from "./components/Footer";
 import About from "./components/About";
+import { CreateTaskPayLoad, Task } from './models/Task';
 
 // Class Way
 
@@ -20,10 +21,9 @@ import About from "./components/About";
 // }
 
 // Function Way
-
 const App: React.FC = () => {
-  const [showAddTask, setShowAddTask]  = useState<boolean | any>(false);
-  const [tasks, setTasks] = useState<any>([]);
+  const [showAddTask, setShowAddTask]  = useState(false);
+  const [tasks, setTasks]: [Task[], any] = useState([]);
 
   useEffect(() => {
     const getTasks = async () => {
@@ -34,23 +34,23 @@ const App: React.FC = () => {
   }, []);
 
   //Fetch Tasks
-  const fetchTasks = async (): Promise<any> => {
+  const fetchTasks = async (): Promise<Task[]> => {
     const res: Response = await fetch("http://localhost:5000/tasks");
-    const data:[] = await res.json();
+    const data: Task[] = await res.json();
 
     return data;
   };
 
   //Fetch Task
-  const fetchTask = async (id: number): Promise<any> => {
+  const fetchTask = async (id: number): Promise<Task> => {
     const res: Response = await fetch(`http://localhost:5000/tasks/${id}`);
-    const data:[] = await res.json();
+    const data: Task = await res.json();
 
     return data;
   };
 
   // Add Task
-  const addTask = async (task: any): Promise<any> => {
+  const addTask = async (task: CreateTaskPayLoad): Promise<void> => {
     const res: Response = await fetch("http://localhost:5000/tasks", {
       method: "POST",
       headers: {
@@ -59,7 +59,7 @@ const App: React.FC = () => {
       body: JSON.stringify(task),
     });
 
-    const data:[] = await res.json();
+    const data: Task = await res.json();
 
     setTasks([...tasks, data]);
     // const id = Math.floor(Math.random() * 1000) + 1;
@@ -68,7 +68,7 @@ const App: React.FC = () => {
   };
 
   // Delete Task
-  const deleteTask = async (id: number): Promise<any> => {
+  const deleteTask = async (id: number): Promise<void> => {
     await fetch(`http://localhost:5000/tasks/${id}`, {
       method: "DELETE",
     });
@@ -76,7 +76,7 @@ const App: React.FC = () => {
   };
 
   // Toggle Reminder
-  const toggleReminder = async (id: number) => {
+  const toggleReminder = async (id: number): Promise<void> => {
     const taskToToggle = await fetchTask(id);
     const updateTask = { ...taskToToggle, reminder: !taskToToggle.reminder };
 
@@ -91,7 +91,7 @@ const App: React.FC = () => {
     const data = await res.json();
 
     setTasks(
-      tasks.map((task: any) =>
+      tasks.map((task: Task) =>
         task.id === id ? { ...task, reminder: data.reminder } : task
       )
     );
