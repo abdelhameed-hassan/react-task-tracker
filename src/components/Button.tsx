@@ -2,53 +2,45 @@
 import React, { MouseEventHandler } from "react";
 
 interface Props {
-  color: string,
-  text: string, 
-  onClick: MouseEventHandler<HTMLElement>
+  color: string;
+  text: string;
+  onClick: MouseEventHandler<HTMLElement>;
 }
 
-const Button :React.FC<Props> = ({ color, text, onClick }) => {
-  return (
-    <button
-      onClick={onClick}
-      style={{ backgroundColor: color }}
-      className="btn"
-    >
-      {text}
-    </button>
-  );
-};
+export default class Task extends React.Component<Props> {
+  static defaultProps = {
+    color: "steelblue",
+  };
 
-Button.defaultProps = {
-  color: "steelblue",
-};
+  render() {
+    const { color, text, onClick } = this.props;
 
-export default Button;
+    return (
+      <button
+        onClick={onClick}
+        style={{ backgroundColor: color }}
+        className="btn"
+      >
+        {text}
+      </button>
+    );
+  }
+}
 
-// import React from "react";
+// const Button :React.FC<Props> = ({ color, text, onClick }) => {
+//   return (
+//     <button
+//       onClick={onClick}
+//       style={{ backgroundColor: color }}
+//       className="btn"
+//     >
+//       {text}
+//     </button>
+//   );
+// };
 
-// export default class Task extends React.Component {
-//   render() {
-//     const { color, text, onClick } = this.props;
+// Button.defaultProps = {
+//   color: "steelblue",
+// };
 
-//     this.defaultProps = {
-//       color: "steelblue",
-//     };
-
-//     this.propTypes = {
-//       text: PropTypes.string,
-//       color: PropTypes.string,
-//       onClick: PropTypes.func,
-//     };
-
-//     return (
-//       <button
-//         onClick={onClick}
-//         style={{ backgroundColor: color }}
-//         className="btn"
-//       >
-//         {text}
-//       </button>
-//     );
-//   }
-// }
+// export default Button;
